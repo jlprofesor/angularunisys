@@ -10,7 +10,7 @@ import { IUser } from './user.interface';
 export class FormularioAvanzadoComponent implements OnInit {
   @ViewChild('f') miFormulario!: NgForm;
 
-  user!: IUser;
+  user: IUser;
 
   generos = [
     { value: 'M', display: 'Mujer' },
@@ -39,9 +39,7 @@ export class FormularioAvanzadoComponent implements OnInit {
   // y dar aspecto a algunos elementos del formulario.
   // El método save registrará el usuario si el formulario es válido.
 
-  constructor() {}
-
-  ngOnInit() {
+  constructor() {
     // Inicialización del modelo
     this.user = {
       nombre: '',
@@ -52,6 +50,8 @@ export class FormularioAvanzadoComponent implements OnInit {
       aficiones: [this.aficiones[1].value] // Tecnología por defecto
     };
   }
+
+  ngOnInit() {}
 
   edadNoValida(): boolean {
     if (this.miFormulario?.controls.edad) {
