@@ -38,11 +38,11 @@ export class FormularioReactivoComponent implements OnInit {
 
   ngOnInit() {
     this.myForm.valueChanges.subscribe((x) => {
-      // console.log(x);
+      console.log(x);
     });
 
     this.myForm.controls.acepto.valueChanges.subscribe((x) => {
-      //  console.log(x);
+      console.log(x);
       // deshabilitar botón
     });
   }
