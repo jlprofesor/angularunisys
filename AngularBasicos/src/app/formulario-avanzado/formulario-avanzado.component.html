@@ -1,0 +1,58 @@
+<div class="container">
+  <h1>Agregar usuario</h1>
+  <form #f="ngForm">
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" class="form-control" name="nombre" [(ngModel)]="user.nombre" required />
+    </div>
+    <div class="form-group mt-2">
+      <label>Edad</label>
+      <input type="number" class="form-control" name="edad" [(ngModel)]="user.edad" />
+      <span class="form-text text-danger" *ngIf="edadNoValida()"> Debe ser superior a 0 </span>
+      <!-- <span class="form-text text-danger" *ngIf="f.controls.edad?.value<0 && f.controls.edad.touched">
+        Debe ser superior a 0
+      </span> -->
+    </div>
+    <div class="form-group mt-2">
+      <label>Sexo</label>
+      <div class="radio" *ngFor="let genero of generos">
+        <label>
+          <input type="radio" name="genero" [(ngModel)]="user.genero" [value]="genero.value" />
+          {{ genero.display }}
+        </label>
+      </div>
+    </div>
+    <div class="form-group mt-2">
+      <label>Rol</label>
+      <select name="role" class="form-control" [(ngModel)]="user.rol">
+        <option *ngFor="let rol of roles" [value]="rol.value">{{ rol.display }}</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="activo" [(ngModel)]="user.activo" />
+          Es Activo
+        </label>
+      </div>
+    </div>
+    <div class="form-group my-2">
+      <label>Aficiones</label>
+      <select multiple name="aficiones" class="form-control" [(ngModel)]="user.aficiones">
+        <option *ngFor="let aficion of aficiones" [value]="aficion.value">{{ aficion.display }}</option>
+      </select>
+    </div>
+
+    <button type="submit" (click)="save(f.value, f.valid)" class="btn btn-primary" [disabled]="f.invalid">
+      Aceptar
+    </button>
+  </form>
+  <div class="my-2" style="border-radius: 5px; padding: 10px; border: 1px solid; background-color: lightgray" *ngIf="f">
+    <div>Detalles del formulario:-</div>
+    <pre>¿Es válido?: <br>{{f.valid | json}}</pre>
+    <pre>¿Se ha aceptado?: <br>{{f.submitted | json}}</pre>
+    <pre>Valores introducidos: <br>{{f.value | json}}</pre>
+    <pre>¿Se ha tocado?: <br>{{f.touched | json}}</pre>
+  </div>
+</div>

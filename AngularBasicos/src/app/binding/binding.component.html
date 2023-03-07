@@ -1,0 +1,31 @@
+<h1>
+  <!--Primer tipo de binding: INTERPOLACIÓN: Vinculación a propiedades definidas en la lógica del componente-->
+  {{titulo}}
+</h1>
+<div>
+  <!-- A continuación elementos HTML a los que definimos valores por medio de atributos. -->
+  <img src="https://angular.io/assets/images/logos/angular/angular.png">
+  <button disabled>Estoy desactivado</button>
+  <br>
+  <!-- Tal como están, la imagen y el botón tendrán siempre el mismo valor en sus propiedades "src" y "disabled".
+       Sin embargo, si quisieras asignar un valor dinámico a uno de esos atributos, tomando algo definido mediante una propiedad del componente, habría
+        que acudir al PROPERTY BINDING o a la INTERPOLACIÓN.
+      El llamado EVENT BINDING vincula eventos a funciones Angular-->
+
+  <img [src]="rutaImagen" [hidden]="ocultarImagen">
+  <img src="{{rutaImagen}}">
+  <button [disabled]="estadoBoton" (click)="muestraOcultaImagen()">Estoy activado o desactivado y muestro/oculto la
+    imagen</button>
+  <!-- El siguiente es un mal uso del binding. Con atributos que aceptan valores booleanos siempre usaremos la técnica del PROPERTY BINDING -->
+  <!-- <button disabled="{{estadoBoton}}">Mal uso del binding</button> -->
+  <button (click)="cambiarEstadoBoton()">Cambiar estado del otro botón</button>
+
+  <!-- Gracias al DOBLE BINDING podemos hacer que el valor de una propiedad pueda ser modificable desde la vista a la lógica y viceversa
+  Utilizamos para esto la directiva ngModel encerrada entre [()] (banana in a box) -->
+  <br>
+  <label>¿Cómo te llamas?</label>
+  <!--Enlace doble (lectura y escritura) entre la vista y el modelo-->
+  <input type="text" [(ngModel)]="aprendiz" />
+  <p>Bienvenido a Angular, {{ aprendiz }} </p>
+
+</div>

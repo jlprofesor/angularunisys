@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Persona</h1>
+  <form (submit)="save()" ngNativeValidate>
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre" required>
+    </div>
+    <div class="form-group">
+      <label>Apellido</label>
+      <input type="text" class="form-control" name="apellido" [(ngModel)]="apellido" required>
+    </div>
+    <div class="form-group">
+      <label>Edad</label>
+      <input type="number" class="form-control" name="edad" [(ngModel)]="edad">
+    </div>
+    <pre>Valores introducidos: <br>{{nombre}}, {{apellido}}, {{edad}}</pre>
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+  </form>
+</div>

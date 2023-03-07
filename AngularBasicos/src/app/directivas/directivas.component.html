@@ -1,0 +1,27 @@
+<h1>Directivas en Angular</h1>
+<!-- La directiva ngIf permite poner/quitar elementos del DOM según estados de propiedades o expresiones lógicas -->
+<label>Escribe angular para ver el logo de Angular</label>
+<input type="text" [(ngModel)]="logo" />
+<div *ngIf="logo == 'angular'; then logoAngular; else otroLogo">texto ignorado</div>
+
+<ng-template #logoAngular><img src="https://angular.io/assets/images/logos/angular/angular.png" /></ng-template>
+<ng-template #otroLogo><img src="https://www.logaster.com.es/static/images/not_allowed.png" /></ng-template>
+
+<img *ngIf="logo == 'angular'" src="https://angular.io/assets/images/logos/angular/angular.png" />
+<img *ngIf="!(logo == 'angular')" src="https://www.logaster.com.es/static/images/not_allowed.png" />
+
+<!-- La directiva ngFor permite generar contenido de forma dinámica según una iteración de un array -->
+<h3>Receta de tortilla</h3>
+<ul>
+  <li *ngFor="let ingrediente of ingredientes; let i = index">
+    <span>{{ i + 1 }} - {{ ingrediente }}</span>
+    <button (click)="eliminarIngrediente(ingrediente)">Eliminar</button>
+  </li>
+</ul>
+<label>Nuevo ingrediente</label>
+<input type="text" [(ngModel)]="ingrediente" />
+<button (click)="agregarIngrediente()">Agregar ingrediente</button>
+<br />
+<label>Nuevo ingrediente</label>
+<input type="text" #ing />
+<button (click)="agregarIngrediente2(ing.value)">Agregar ingrediente</button>
