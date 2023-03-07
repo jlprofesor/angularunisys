@@ -1,0 +1,68 @@
+<div class="container">
+  <h1>Registro</h1>
+  <form [formGroup]="myForm" (ngSubmit)="createUser()">
+    <div class="form-group">
+      <label>Usuario</label>
+      <input type="text" class="form-control"
+        [ngClass]="{ 'input-error': myForm.controls.userName.invalid && myForm.controls.userName.touched }" autofocus
+        placeholder="Nombre" formControlName="userName" maxlength="50" />
+      <div *ngIf="myForm.controls.userName.invalid && myForm.controls.userName.touched">
+        <p class="caption text-danger mt-1 ml-4">Nombre obligatorio</p>
+      </div>
+    </div>
+    <div class="form-group mt-2">
+      <label>Email</label>
+      <input type="email" class="form-control" name="email"
+        [ngClass]="{ 'input-error': myForm.controls.email.invalid && myForm.controls.email.touched }"
+        placeholder="Email" formControlName="email" maxlength="100" />
+      <div *ngIf="myForm.controls.email.invalid && myForm.controls.email.touched">
+        <p class="caption text-danger mt-1 ml-4" *ngIf="myForm.controls.email.errors?.required">Email obligatorio</p>
+        <p class="caption text-danger mt-1 ml-4" *ngIf="myForm.controls.email.errors?.pattern">Email incorrecto</p>
+        <p class="caption text-danger mt-1 ml-4" *ngIf="myForm.controls.email.errors?.emailOcupado">Email ocupado</p>
+      </div>
+    </div>
+    <div class="form-group mt-2">
+      <label>Contraseña</label>
+      <div class="input-group">
+        <input type="password" class="form-control"
+          [ngClass]="{ 'input-error': myForm.controls.password.invalid && myForm.controls.password.touched }"
+          (keydown.space)="$event.preventDefault()" [type]="show ? 'text' : 'password'" formControlName="password"
+          maxlength="50" placeholder="Contraseña" />
+        <span class="input-group-btn">
+          <button type="button" (click)="password()" class="btn btn-secondary">Mostrar/ocultar contraseña</button>
+        </span>
+      </div>
+      <div *ngIf="myForm.controls.password.invalid && myForm.controls.password.touched">
+        <p class="caption text-danger mt-1 ml-4" *ngIf="myForm.controls.password.errors?.required">
+          Contraseña obligatoria
+        </p>
+        <p class="caption text-danger mt-1 ml-4" *ngIf="myForm.controls.password.errors?.minlength">
+          6 caracteres mínimo
+        </p>
+      </div>
+    </div>
+    <div class="form-group my-2">
+      <input type="password"
+        [ngClass]="{ 'input-error': myForm.controls.password2.invalid && myForm.controls.password2.touched }"
+        [type]="show ? 'text' : 'password'" class="form-control" formControlName="password2"
+        (keydown.space)="$event.preventDefault()" placeholder="Confirmar contraseña" maxlength="50" />
+      <div *ngIf="myForm.controls.password2?.invalid && myForm.controls.password2.touched">
+        <p class="caption text-danger mt-1 ml-4" *ngIf="myForm.controls.password2.errors?.invalidPass">
+          Las contraseñas no coinciden
+        </p>
+      </div>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" class="form-check-input" formControlName="acepto" /> He leído y acepto las
+        condiciones
+        de uso y la política de privacidad</label>
+    </div>
+    <div class="form-button text-center">
+      <button type="submit" class="btn btn-primary"
+        [class.btnDisabled]="myForm.invalid || myForm.pending || myForm.controls.acepto.value == false"
+        [disabled]="myForm.invalid || myForm.pending || myForm.controls.acepto.value == false">
+        Crear cuenta
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+.input-error {
+  border: 1px solid lightcoral !important;
+}
+
+.caption {
+  font-size: x-small;
+}
+
+.btnDisabled {
+  background-color: red !important;
+}
