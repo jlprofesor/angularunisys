@@ -9,6 +9,8 @@ import { DirectivasComponent } from './directivas/directivas.component';
 import { FormularioBasicoComponent } from './formulario-basico/formulario-basico.component';
 import { FormularioAvanzadoComponent } from './formulario-avanzado/formulario-avanzado.component';
 import { FormularioReactivoComponent } from './formulario-reactivo/formulario-reactivo.component';
+import { FormularioLoginComponent } from './formulario-login/formulario-login.component';
+import { ErrorMsgDirective } from './formulario-login/error-msg.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormularioReactivoComponent } from './formulario-reactivo/formulario-re
     DirectivasComponent,
     FormularioBasicoComponent,
     FormularioAvanzadoComponent,
-    FormularioReactivoComponent
+    FormularioReactivoComponent,
+    FormularioLoginComponent,
+    ErrorMsgDirective
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
