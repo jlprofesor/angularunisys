@@ -12,6 +12,10 @@ export class FormularioReactivoComponent implements OnInit {
   mensajeError: string = '';
   myForm: FormGroup;
   show = false;
+  roles = [
+    { value: 0, display: 'Administrador' },
+    { value: 1, display: 'Usuario' }
+  ];
 
   constructor(private formBuilder: FormBuilder, private emailAsyncValidator: AppService) {
     this.myForm = this.formBuilder.group(
@@ -28,6 +32,7 @@ export class FormularioReactivoComponent implements OnInit {
         ],
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
         password2: [''],
+        rol: [1],
         acepto: [false]
       },
       {
@@ -84,7 +89,8 @@ export class FormularioReactivoComponent implements OnInit {
     const user: IUserLogin = {
       email: this.myForm.value.email,
       password: this.myForm.value.password,
-      userName: this.myForm.value.userName
+      userName: this.myForm.value.userName,
+      rol: this.myForm.value.rol
     };
 
     this.myForm.reset();

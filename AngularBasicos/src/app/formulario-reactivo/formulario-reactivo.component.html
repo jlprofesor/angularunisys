@@ -52,6 +52,12 @@
         </p>
       </div>
     </div>
+    <div class="form-group mt-2">
+      <label>Rol</label>
+      <select name="role" class="form-control" formControlName="rol">
+        <option *ngFor="let rol of roles" [value]="rol.value">{{ rol.display }}</option>
+      </select>
+    </div>
     <div class="checkbox">
       <label><input type="checkbox" class="form-check-input" formControlName="acepto" /> He leído y acepto las
         condiciones
