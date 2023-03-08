@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Pipes personalizados</h1>
+  <p>Pipes creados por {{'nosotros'| mayusculas:enMayusculas }} </p>
+  <button class="btn btn-primary" (click)="cambiarMayusculas()">Testear pipe mayúsculas</button>
+  <br />
+  <hr />
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Trabaja</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of personas">
+        <td>{{p.nombre}}</td>
+        <!-- los pipes se pueden encadenar -->
+        <td>{{p.trabaja | trabaja | titlecase}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <p>{{bytes|number}} de bytes son {{bytes | bytesToMegas}}</p>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+  <h3><a href="https://angular.io/api?query=pipe" target="_blank">Pipes en Angular</a></h3>
+  <p>Pipes básicos de texto</p>
+  <ul>
+    <li>Original: {{nombre}}</li>
+    <li>Pipe uppercase: {{nombre | uppercase}}</li>
+    <li>Pipe lowercase: {{nombre | lowercase}}</li>
+    <li>Pipe titlecase {{nombre | titlecase}}</li>
+  </ul>
+
+  <p><a href="https://angular.io/api/common/DatePipe" target="_blank">Pipe date</a></p>
+  <ul>
+    <li>Original: {{fechaActual}}</li>
+    <li>{{fechaActual | date: 'short'}}</li>
+    <li>{{fechaActual | date: 'mediumDate'}}</li>
+    <li>{{fechaActual | date: 'dd/MM/yyyy'}}</li>
+    <li>{{fechaActual | date:'MMMM dd, yyyy'}}</li>
+    <li>{{fechaActual | date:'long':'GMT-4'}}</li>
+    <li>{{fechaActual | date:'long':'':'fr' }}</li>
+  </ul>
+
+  <p>Pipes numéricos</p>
+  <ul>
+    <li>Original: {{facturacion}}</li>
+    <li>{{facturacion | number:'1.2-2' }}</li>
+    <li>{{facturacion | currency:'EUR':'symbol-narrow':'1.4-4' }}</li>
+    <li>{{porcentaje | percent:'2.2-2'}}</li>
+  </ul>
+
+</div>

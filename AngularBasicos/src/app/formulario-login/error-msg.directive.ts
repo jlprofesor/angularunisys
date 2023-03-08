@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class ErrorMsgDirective implements OnInit {
   private _color: string = 'red';
-  private _mensaje: string = 'Este campo es requerido';
+  private _mensaje: string = 'Error en la introducción del campo';
 
   htmlElement: ElementRef<HTMLElement>;
 

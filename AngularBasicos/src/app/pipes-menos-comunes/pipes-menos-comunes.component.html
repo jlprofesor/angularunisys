@@ -1,0 +1,63 @@
+<div class="container">
+  <h3><a href="https://angular.io/api?query=pipe" target="_blank">Pipes en Angular</a></h3>
+  <p><a href="https://angular.io/api/common/I18nSelectPipe" target="_blank">I18nSelectPipe</a></p>
+  <p>
+    Saludos {{ nombre }}, es un placer
+    {{ genero | i18nSelect:invitacionSpecs }}
+    a nuestro evento.
+  </p>
+  <button (click)="cambiarCliente()" class="btn btn-warning">Cambiar cliente</button>
+  <br>
+  <hr>
+
+  <p><a href="https://angular.io/api/common/I18nPluralPipe" target="_blank">I18nPluralPipe</a></p>
+  <p>
+    Actualmente {{ clientes.length | i18nPlural:clientesSpecs }}
+  </p>
+  <button (click)="borrarCliente()" class="btn btn-danger">Eliminar cliente</button>
+  <br>
+  <hr>
+
+  <p><a href="https://angular.io/api/common/SlicePipe" target="_blank">SlicePipe</a></p>
+  <b>Original</b>
+  <pre>{{ clientes }}</pre>
+
+  <b>slice:0:2 (La segunda posición es excluyente)</b>
+  <pre>{{ clientes | slice:0:2 }}</pre>
+
+  <b>slice:1:2</b>
+  <pre>{{ clientes | slice:1:2 }}</pre>
+
+  <b>slice:1:3</b>
+  <pre>{{ clientes | slice:1:3 }}</pre>
+
+  <b>slice:3:4</b>
+  <pre>{{ clientes | slice:3:4 }}</pre>
+
+  <b>slice:0:4 (de la propiedad nombre)</b>
+  <pre>{{ nombre | slice:0:4 }}</pre>
+  <br>
+  <hr>
+
+  <p><a href="https://angular.io/api/common/KeyValuePipe" target="_blank">KeyValuePipe</a></p>
+  <ul>
+    <li *ngFor="let item of persona | keyvalue">
+      <b>{{ item.key | titlecase }}:</b> {{ item.value }}
+    </li>
+  </ul>
+  <br>
+  <hr>
+
+  <p><a href="https://angular.io/api/common/JsonPipe" target="_blank">JsonPipe</a></p>
+  <pre>{{ personas | json }}</pre>
+  <br>
+  <hr>
+
+  <p><a href="https://angular.io/api/common/AsyncPipe" target="_blank">AsyncPipe</a></p>
+  <pre *ngIf="!(miObservable | async)">Resolviendo observable</pre>
+  <pre>{{ miObservable | async }}</pre>
+
+  <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa</pre>
+  <pre>{{ valorPromesa | async }}</pre>
+
+</div>
