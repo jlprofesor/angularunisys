@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Agregar usuario</h1>
-  <form #f="ngForm" (submit)="save(f.value, f.valid)">
+  <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)">
     <div class="form-group">
       <label>Nombre</label>
       <input type="text" class="form-control" name="nombre" [(ngModel)]="user.nombre" required />
