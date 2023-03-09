@@ -1,0 +1,8 @@
+<h3>Clientes</h3>
+<hr>
+<ul>
+  <li *ngFor="let cliente of clientes">
+    {{ cliente.nombre }} - {{ cliente.facturacion | currency:'EUR':'symbol-narrow':'1.2-2' }}
+    <button type="button" class="btn btn-primary" (click)="editar(cliente)">Editar</button>
+  </li>
+</ul>

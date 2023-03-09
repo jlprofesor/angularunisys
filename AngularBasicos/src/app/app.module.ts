@@ -24,6 +24,8 @@ import { PipesPersonalizadosComponent } from './pipes-personalizados/pipes-perso
 import { MayusculasPipe } from './pipes-personalizados/mayusculas.pipe';
 import { TrabajaPipe } from './pipes-personalizados/trabaja.pipe';
 import { BytesToMegasPipe } from './pipes-personalizados/bytes-to-megas.pipe';
+import { LifeCycleComponent } from './life-cycle/life-cycle.component';
+import { ClientesModule } from './clientes/clientes.module';
 
 @NgModule({
   declarations: [
@@ -41,9 +43,10 @@ import { BytesToMegasPipe } from './pipes-personalizados/bytes-to-megas.pipe';
     PipesPersonalizadosComponent,
     MayusculasPipe,
     TrabajaPipe,
-    BytesToMegasPipe
+    BytesToMegasPipe,
+    LifeCycleComponent
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, ClientesModule],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })

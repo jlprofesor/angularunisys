@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Módulo de clientes</h1>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <app-clientes (onEditarCliente)="editarCliente($event)"></app-clientes>
+    </div>
+    <div class="col">
+      <app-agregar [cliente]="cliente" [edit]="editar" (onNuevoCliente)="clienteAgregado($event)"
+        (onModificadoCliente)="clienteAgregado($event)"></app-agregar>
+    </div>
+  </div>
+</div>

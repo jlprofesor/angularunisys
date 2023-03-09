@@ -1,0 +1,22 @@
+<h3>Agregar <small>{{ cliente.nombre }}</small></h3>
+<hr>
+
+<form (ngSubmit)="agregar()">
+  <div class="form-group">
+    <label>Nombre</label>
+    <input type="text" class="form-control" placeholder="Nombre" name="nombre" [(ngModel)]="cliente.nombre" />
+  </div>
+  <div class="form-group my-4">
+    <label>Facturacion</label>
+    <input type="number" class="form-control" placeholder="Facturación" name="facturacion"
+      [(ngModel)]="cliente.facturacion" />
+  </div>
+  <button type="submit" class="btn btn-success" *ngIf="!edit">
+    Agregar
+  </button>
+
+  <button type="submit" class="btn btn-success" *ngIf="edit">
+    Actualizar
+  </button>
+
+</form>
