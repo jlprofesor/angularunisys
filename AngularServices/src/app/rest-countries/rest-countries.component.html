@@ -1,0 +1,10 @@
+<div class="container">
+  <select class="form-control">
+    <option value="default">Seleccciona país</option>
+    <option *ngFor="let pais of paises">
+      {{ pais.name.common }}
+    </option>
+  </select>
+
+  <!-- <img *ngFor="let pais of paises" [src]="pais.flags.png" [alt]="pais.name.common" /> -->
+</div>
