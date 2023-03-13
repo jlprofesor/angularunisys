@@ -28,6 +28,9 @@ import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { ClientesModule } from './clientes/clientes.module';
 import { PromesasComponent } from './promesas/promesas.component';
 import { ObservablesComponent } from './observables/observables.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app.routing.module';
+import { HomeButtonComponent } from './home-button/home-button.component';
 
 @NgModule({
   declarations: [
@@ -48,9 +51,11 @@ import { ObservablesComponent } from './observables/observables.component';
     BytesToMegasPipe,
     LifeCycleComponent,
     PromesasComponent,
-    ObservablesComponent
+    ObservablesComponent,
+    HomeComponent,
+    HomeButtonComponent
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, ClientesModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, ClientesModule, AppRoutingModule],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })

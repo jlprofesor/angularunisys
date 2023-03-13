@@ -1,22 +1,7 @@
-<!-- <app-binding></app-binding>
+<div class="container">
+  <h1>Angular básicos</h1>
+  <hr>
+  <router-outlet></router-outlet>
+</div>
 
-<hr>
-
-<app-directivas></app-directivas> -->
-
-<!-- <app-formulario-basico></app-formulario-basico> -->
-
-<!-- <app-formulario-avanzado></app-formulario-avanzado> -->
-
-<!-- <app-formulario-login></app-formulario-login> -->
-
-<!-- <app-formulario-reactivo-dinamico></app-formulario-reactivo-dinamico> -->
-<!-- <app-pipes></app-pipes> -->
-<!-- <app-pipes-menos-comunes></app-pipes-menos-comunes> -->
-<!-- <app-pipes-personalizados></app-pipes-personalizados> -->
-
-<!-- <app-life-cycle *ngIf="mostrar"></app-life-cycle>
-<button class="btn btn-primary" (click)="mostrarOcultar()">Ocultar/Mostrar</button> -->
-
-<!-- <app-main-page></app-main-page> -->
-<app-observables></app-observables>
+<app-home-button *ngIf="!(url=='/home')"></app-home-button>

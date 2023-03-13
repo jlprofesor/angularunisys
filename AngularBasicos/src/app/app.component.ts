@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   mostrar = true;
+
+  get url(): string {
+    return this.router.url;
+  }
+
+  constructor(private router: Router) {}
 
   mostrarOcultar() {
     this.mostrar = !this.mostrar;

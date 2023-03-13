@@ -1,0 +1,185 @@
+Entramos al proyecto AngularBasicos
+----------------------------------------------------------------------------
+ng generate component home --skip-tests=true
+----------------------------------------------------------------------------
+--home.component.html
+
+<h1>Home</h1>
+<div class="row">
+  <button type="button" class="btn btn-primary mt-2" *ngFor="let p of pages" (click)="goToPage(p.url)">{{p.title}}</button>
+</div>
+
+----------------------------------------------------------------------------
+--home.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+  pages = [
+    {
+      title: 'Binding',
+      url: '/binding'
+    },
+    {
+      title: 'Directivas',
+      url: '/directivas'
+    },
+    {
+      title: 'Formulario básico',
+      url: '/form'
+    },
+    {
+      title: 'Formulario ngModel',
+      url: '/form-ngmodel'
+    },
+    {
+      title: 'Formulario reactivo',
+      url: '/form-reactivo'
+    },
+    {
+      title: 'Pipes',
+      url: '/pipes'
+    },
+    {
+      title: 'Promesas',
+      url: '/promesas'
+    },
+    {
+      title: 'Observables',
+      url: '/observables'
+    }
+  ];
+  constructor(private router: Router) {}
+
+  ngOnInit() {}
+
+  goToPage(url: string) {
+    console.log(url);
+    this.router.navigateByUrl(url);
+  }
+}
+
+---------------------------------------------------------------------------------------
+Creamos app.routing.module.ts al mismo nivel de app.module.ts
+---------------------------------------------------------------------------------------
+--app.routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { BindingComponent } from './binding/binding.component';
+import { DirectivasComponent } from './directivas/directivas.component';
+import { FormularioAvanzadoComponent } from './formulario-avanzado/formulario-avanzado.component';
+import { FormularioBasicoComponent } from './formulario-basico/formulario-basico.component';
+import { FormularioReactivoComponent } from './formulario-reactivo/formulario-reactivo.component';
+import { HomeComponent } from './home/home.component';
+import { ObservablesComponent } from './observables/observables.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { PromesasComponent } from './promesas/promesas.component';
+
+const appRoutes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'binding', component: BindingComponent },
+  { path: 'directivas', component: DirectivasComponent },
+  { path: 'form', component: FormularioBasicoComponent },
+  { path: 'form-ngmodel', component: FormularioAvanzadoComponent },
+  { path: 'form-reactivo', component: FormularioReactivoComponent },
+  { path: 'pipes', component: PipesComponent },
+  { path: 'observables', component: ObservablesComponent },
+  { path: 'promesas', component: PromesasComponent },
+  { path: '**', component: HomeComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
+
+--------------------------------------------------------------------------------------------
+--app.module.ts
+
+(Añadimos AppRoutingModule a los imports)
+---------------------------------------------------------------------------------------------
+--app.component.html
+
+<div class="container">
+  <h1>Angular básicos</h1>
+  <hr>
+  <router-outlet></router-outlet>
+</div>
+
+---------------------------------------------------------------------------------------------
+ng g c homeButton --module=app.module
+---------------------------------------------------------------------------------------------
+--home-button.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-home-button',
+  templateUrl: './home-button.component.html',
+  styleUrls: ['./home-button.component.css']
+})
+export class HomeButtonComponent implements OnInit {
+  constructor(private router: Router) {}
+
+  ngOnInit() {}
+
+  goHome() {
+    this.router.navigateByUrl('home');
+  }
+}
+
+---------------------------------------------------------------------------------------------
+--home-button.component.html
+
+<button class="btn btn-warning" (click)="goHome()">Ir a home</button>
+
+---------------------------------------------------------------------------------------------
+--home-button.component.css
+
+button {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
+
+---------------------------------------------------------------------------------------------
+--app.component.ts
+
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  mostrar = true;
+
+  get url(): string {
+    return this.router.url;
+  }
+
+  constructor(private router: Router) {}
+
+  mostrarOcultar() {
+    this.mostrar = !this.mostrar;
+  }
+}
+
+---------------------------------------------------------------------------------------------
+--app.component.html
+
+...
+
+<app-home-button *ngIf="!(url=='/home')"></app-home-button>
