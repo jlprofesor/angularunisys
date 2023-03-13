@@ -1,34 +1,34 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { IPais } from '../interfaces/pais.interface';
+import { IPersona } from '../interfaces/persona.interface';
 import { RestCountriesService } from '../services/rest-countries.service';
 
 @Component({
-  selector: 'app-rest-countries',
-  templateUrl: './rest-countries.component.html',
-  styleUrls: ['./rest-countries.component.css']
+  selector: 'app-personas',
+  templateUrl: './personas.component.html',
+  styleUrls: ['./personas.component.css']
 })
-export class RestCountriesComponent implements OnInit {
+export class PersonasComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  dataSource!: MatTableDataSource<IPais>;
-  paises: IPais[] = [];
+  dataSource!: MatTableDataSource<IPersona>;
+  personas: IPersona[] = [];
 
-  displayedColumns: string[] = ['bandera', 'nombre', 'capital', 'habitantes'];
+  displayedColumns: string[] = ['foto', 'nombre', 'apellido', 'email'];
 
   constructor(private restCountriesService: RestCountriesService) {}
 
   ngOnInit() {
-    this.getPaises();
+    this.getPersonas();
   }
 
-  getPaises() {
-    this.restCountriesService.getCountries().subscribe({
+  getPersonas() {
+    this.restCountriesService.getPeople().subscribe({
       next: (data) => {
         console.log(data);
-        this.paises = data;
-        this.dataSource = new MatTableDataSource<IPais>(this.paises);
+        this.personas = data;
+        this.dataSource = new MatTableDataSource<IPersona>(this.personas);
         this.dataSource.paginator = this.paginator;
       },
       error: (err) => console.log(err),
