@@ -1,1 +1,12 @@
-<p>rest-countries-query works!</p>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{pais[0].name.common}}</mat-card-title>
+    <mat-card-subtitle>{{pais[0].region}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="pais[0].flags.png" alt="Bandera de {{pais[0].name.common}}">
+  <mat-card-content>
+    <p>
+      Capital: {{pais[0].capital}}
+    </p>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,2 @@
+<img src="http://openweathermap.org/img/w/{{infoMeteo.weather[0].icon}}.png" alt="weather icon" *ngIf="infoMeteo">
+<span class="badge bg-secondary" *ngIf="infoMeteo">{{infoMeteo.main.temp}}</span>
